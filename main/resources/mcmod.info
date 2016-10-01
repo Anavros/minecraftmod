@@ -1,0 +1,12 @@
+[{
+  "modid": "boozemod",
+  "name": "Booze Mod",
+  "description": "Adds a variety of foods, meals, and drinks (including alcoholic drinks), with a rich set of cooking mechanics.",
+  "version": "0.0.1.0",
+  "mcversion": "1.10.2",
+  "logoFile": "assets/examplemod/textures/logo.png",
+  "url": "minecraftforge.net/",
+  "updateJSON": "minecraftforge.net/versions.json",
+  "authorList": ["JoieDFW", "Anavros"],
+  "credits": "I'd like to thank the burritos I had for lunch today."
+}]
