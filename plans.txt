@@ -1,0 +1,22 @@
+
+ Mod Plans
+===========
+
+Focus:
+-> We are making a mod that adds interesting food and cooking mechanics.
+-> Interesting cooking processes are more important than tons of food varieties.
+-> Hunger values with fall in line with vanilla values.
+-> There will be two sets of textures: one default and one to match Blossom.
+
+Details:
+-> Cooking mechanics that involve temperature, doneness, taste, and texture.
+-> Brewing juices and alcohols.
+-> Foods ranging from snacks to complex meals.
+
+How to Differentiate from HarvestCraft: (We don't want to step on anyone's toes.)
+-> Less variety of food.
+-> Cooking mechanics are more involved than basic crafting.
+-> Lack of gardens and different methods of finding seeds.
+
+How to Integrate with Unrelated Mods:
+-> Utensils made from different materials may have different heating properties.
