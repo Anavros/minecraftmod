@@ -4,6 +4,7 @@
 +Research a way to implement taste and texture mechanics.
 +Look into a way to have all alcohols under a single type.
 +See if we can remove the vanilla cake recipe.
++
 
 Blocks:
 +Skillet
