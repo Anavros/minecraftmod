@@ -1,58 +1,62 @@
-+Create a block.
-+Create an item.
 
-+Research a way to implement taste and texture mechanics.
-+Look into a way to have all alcohols under a single type.
-+See if we can remove the vanilla cake recipe.
-+
+Progress:
+-> Create a block. ---
+-> Create an item. ---
+-> Add model and texture to teapot block.
+-> Make acorn test item edible.
+
+Research:
+-> Research a way to implement taste and texture mechanics.
+-> Look into a way to have all alcohols under a single type.
+-> See if we can remove the vanilla cake recipe.
 
 Blocks:
-+Skillet
-+Cutting Board
-+Teapot
-+Herb Garden
+-> Skillet
+-> Cutting Board
+-> Teapot
+-> Herb Garden
 
 Items (General):
-+Herbs 
-+Ice Cream
-+Boozy Ice Cream
-+Irish Cream
-+Chocolate Milk
-+Hot Cocoa
+-> Herbs
+-> Ice Cream
+-> Boozy Ice Cream
+-> Irish Cream
+-> Chocolate Milk
+-> Hot Cocoa
 
 Items (Cake Like):
-+Pizza 
-+Cheesecake 
-+Key Lime Pie
-+Jello
-+Lasanga
-+Giant Cookie
-+Pot Pie
-+Shepherd's Pie
-+Ice Cream Cake
+-> Pizza
+-> Cheesecake
+-> Key Lime Pie
+-> Jello
+-> Lasanga
+-> Giant Cookie
+-> Pot Pie
+-> Shepherd's Pie
+-> Ice Cream Cake
 
 Items (Alcohol):
-+Beer
-+Whiskey
-+Bourbon
-+Vodka
-+Gin
-+Rum
-+Scotch
-+Tequila
-+Wine
-+Champagne
+-> Beer
+-> Whiskey
+-> Bourbon
+-> Vodka
+-> Gin
+-> Rum
+-> Scotch
+-> Tequila
+-> Wine
+-> Champagne
 
 Forms of Cooking
-+Raw: combing items.
-+Basic: cooks directly in a furnace.
-+Advanced: player must build an advanced oven and place the uncooked item in it which will bake. Oven will consist of multiple blocks.
-+Skillet cooking: 
-+Boiling:
-+Deep Frying:
-+Pickling:
-+Curing:
-+Smoking:
-+Brewing:
-+Tea Brewing:
-+Coffee Brewing:
+-> Raw: combing items.
+-> Basic: cooks directly in a furnace.
+-> Advanced: player must build an advanced oven and place the uncooked item in it which will bake. Oven will consist of multiple blocks.
+-> Skillet cooking:
+-> Boiling:
+-> Deep Frying:
+-> Pickling:
+-> Curing:
+-> Smoking:
+-> Brewing:
+-> Tea Brewing:
+-> Coffee Brewing:
