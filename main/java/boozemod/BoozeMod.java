@@ -6,6 +6,8 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
+import boozemod.ItemAcorn;
+import boozemod.BlockTeapot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.block.Block;
@@ -18,9 +20,9 @@ public class BoozeMod
     public static final String VERSION = "0.0.1.0";
 
     // does this have to be outside the init definition?
-    public static Item acorn;
-    public static Block teapot;
-    public static ItemBlock teapotItem;
+    private static ItemAcorn acorn;
+    private static BlockTeapot teapot;
+    private static ItemBlock teapotItemBlock;
 
     @EventHandler
     public void init(FMLInitializationEvent event)
@@ -28,19 +30,11 @@ public class BoozeMod
         // Smoke test.
         System.out.println("BOOZE MOD IS HERE BABY");
 
-        // Basic testing.
-        // Add a simple item, an acorn.
-        acorn = new Item(); // make sure you type "new Item()" and not just "Item()"!
-        acorn.setUnlocalizedName("Acorn");
-        GameRegistry.register(acorn.setRegistryName("acorn"));
-        // Now add a block, a teapot.
-        // The Block instantiator requires a Material.
-        // Material is an enum as far as I can tell.
-        teapot = new Block(Material.IRON).setUnlocalizedName("Teapot");
-        GameRegistry.register(teapot.setRegistryName("teapot"));
-        // The block also needs an associated ItemBlock.
-        // So create a *new* ItemBlock using the block variable as an argument.
-        teapotItem = new ItemBlock(teapot);
-        GameRegistry.register(teapotItem.setRegistryName("teapot"));
+        acorn = new ItemAcorn();
+        teapot = new BlockTeapot();
+        teapotItemBlock = new ItemBlock(teapot);
+        GameRegistry.register(acorn);
+        GameRegistry.register(teapot);
+        GameRegistry.register(teapotItemBlock.setRegistryName(teapot.getRegistryName()));
     }
 }
