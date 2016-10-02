@@ -1,7 +1,6 @@
 package boozemod;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
@@ -9,7 +8,7 @@ import net.minecraft.world.World;
 import boozemod.TileEntityTeapot;
 
 //public class BlockTeapot extends Block implements ITileEntityProvider {
-public class BlockTeapot extends BlockContainer {
+public class BlockTeapot extends Block {
     public BlockTeapot() {
         super(Material.IRON);
         this.setUnlocalizedName("Teapot");
