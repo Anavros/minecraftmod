@@ -6,11 +6,16 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.client.model.ModelLoader;
 
 import boozemod.items.ItemAcorn;
 import boozemod.items.ItemPepper;
@@ -33,26 +38,41 @@ public class BoozeMod
     private static ItemBlock teapotItemBlock;
 
     @EventHandler
-    public void init(FMLInitializationEvent event)
-    {
-        // Smoke test.
-        System.out.println("BOOZE MOD IS HERE BABY");
-
+    public void preInit(FMLPreInitializationEvent event) {
+        // Models and textures must be loaded in pre-init!
+        // instantiate the item
         acorn = new ItemAcorn();
-        pepper = new ItemPepper();
-        teapot = new BlockTeapot();
-        int taste;
-        taste = ItemMeal.getRandomTaste();
-        meal = new ItemMeal(taste); // can't do that in constructor?
-        teapotItemBlock = new ItemBlock(teapot);
+        // submit the model
+        ModelLoader.setCustomModelResourceLocation(acorn, 0, new ModelResourceLocation(
+            "boozemod:acorn", "inventory"));
+        // and register
         GameRegistry.register(acorn);
+
+        pepper = new ItemPepper();
+        ModelLoader.setCustomModelResourceLocation(pepper, 0, new ModelResourceLocation(
+            "boozemod:pepper", "inventory"));
         GameRegistry.register(pepper);
+
+        meal = new ItemMeal(); // can't do that in constructor?
+        ModelLoader.setCustomModelResourceLocation(meal, 0, new ModelResourceLocation(
+            "boozemod:meal", "inventory"));
         GameRegistry.register(meal);
+
+        // init blocks
+        teapot = new BlockTeapot();
+        teapotItemBlock = new ItemBlock(teapot);
         GameRegistry.register(teapot);
         GameRegistry.register(teapotItemBlock.setRegistryName(teapot.getRegistryName()));
 
         // Add mod events, including tooltip handler.
         ModEvents.registerEvents();
+    }
+
+    @EventHandler
+    public void init(FMLInitializationEvent event)
+    {
+        // Smoke test.
+        System.out.println("BOOZE MOD IS HERE BABY");
     }
 
     @EventHandler

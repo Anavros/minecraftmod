@@ -1,5 +1,7 @@
 #Foods
 item.Acorn.name=Acorn
+item.Pepper.name=Pepper
+item.Meal.name=Meal
 
 #Blocks
 tile.Teapot.name=Teapot
