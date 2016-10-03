@@ -24,8 +24,7 @@ public class EventItemTooltip {
             // all BoozeFood children should have getTaste, right?
             String tasteString;
             tasteString = getTasteString(item);
-            event.getToolTip().add("Hello, there!" + tasteString);
-            event.getToolTip().add("This food is " + tasteString + ".");
+            event.getToolTip().add("This food tastes " + tasteString + ".");
         }
         // if not BoozeFood, do nothing
     }

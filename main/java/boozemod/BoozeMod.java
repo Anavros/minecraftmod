@@ -12,6 +12,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import boozemod.ItemAcorn;
+import boozemod.ItemPepper;
 import boozemod.BlockTeapot;
 import boozemod.ModEvents;
 
@@ -23,6 +24,7 @@ public class BoozeMod
 
     // does this have to be outside the init definition?
     private static ItemAcorn acorn;
+    private static ItemPepper pepper;
     private static BlockTeapot teapot;
     private static ItemBlock teapotItemBlock;
 
@@ -33,9 +35,11 @@ public class BoozeMod
         System.out.println("BOOZE MOD IS HERE BABY");
 
         acorn = new ItemAcorn();
+        pepper = new ItemPepper();
         teapot = new BlockTeapot();
         teapotItemBlock = new ItemBlock(teapot);
         GameRegistry.register(acorn);
+        GameRegistry.register(pepper);
         GameRegistry.register(teapot);
         GameRegistry.register(teapotItemBlock.setRegistryName(teapot.getRegistryName()));
 
