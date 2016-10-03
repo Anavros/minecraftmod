@@ -9,13 +9,15 @@ import net.minecraft.block.material.Material;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import boozemod.items.ItemAcorn;
 import boozemod.items.ItemPepper;
-import boozemod.items.ItemMeal; 
+import boozemod.items.ItemMeal;
 import boozemod.blocks.BlockTeapot;
 import boozemod.init.ModEvents;
+import boozemod.init.ModCommands;
 
 @Mod(modid = BoozeMod.MODID, version = BoozeMod.VERSION)
 public class BoozeMod
@@ -51,5 +53,10 @@ public class BoozeMod
 
         // Add mod events, including tooltip handler.
         ModEvents.registerEvents();
+    }
+
+    @EventHandler
+    public void onServerLoad(FMLServerStartingEvent event) {
+        ModCommands.registerCommands(event);
     }
 }

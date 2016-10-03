@@ -2,7 +2,7 @@ package boozemod.events;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-//import net.minecraft.util.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -17,19 +17,20 @@ public class EventItemTooltip {
         ItemStack stack = event.getItemStack();
         Item item = stack.getItem();
 
-        // Only apply tooltip to our foods, instances of BoozeFood.
-        if(item == null) return;
-        if(item instanceof BoozeFood) {
-            //item = (BoozeFood)item;
-            // all BoozeFood children should have getTaste, right?
+        // The tooltip only applies to BoozeFoods that are not null and have NBT data.
+        if(item != null && item instanceof BoozeFood) {
+            // assumes stack item will have nbt?
+            // is this any different than just setting a variable?
             String tasteString;
             tasteString = getTasteString(item);
             event.getToolTip().add("This food tastes " + tasteString + ".");
+            event.getToolTip().add("This is an instance of BoozeFood.");
         }
         // if not BoozeFood, do nothing
     }
 
     private String getTasteString(Item item) {
+        // all BoozeFood children should have getTaste, right?
         int taste = ((BoozeFood)item).getTaste(); // bad design!
         switch(taste) {
             case 0:
