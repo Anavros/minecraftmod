@@ -4,6 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import net.minecraft.block.state.IBlockState;
 
 import boozemod.tileentities.TileEntityTeapot;
 
@@ -13,6 +14,11 @@ public class BlockTeapot extends Block {
         super(Material.IRON);
         this.setUnlocalizedName("Teapot");
         this.setRegistryName("teapot");
+    }
+
+    @Override 
+    public boolean isOpaqueCube(IBlockState bs) {
+        return false;
     }
 
 /*
