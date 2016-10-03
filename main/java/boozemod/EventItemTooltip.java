@@ -18,8 +18,29 @@ public class EventItemTooltip {
         Item item = stack.getItem();
 
         // Only apply tooltip to our foods, instances of BoozeFood.
-        if(item == null || !(item instanceof BoozeFood)) return;
+        if(item == null) return;
+        if(item instanceof BoozeFood) {
+            //item = (BoozeFood)item;
+            // all BoozeFood children should have getTaste, right?
+            String tasteString;
+            tasteString = getTasteString(item);
+            event.getToolTip().add("Hello, there!" + tasteString);
+            event.getToolTip().add("This food is " + tasteString + ".");
+        }
+        // if not BoozeFood, do nothing
+    }
 
-        event.getToolTip().add("Hello, there!");
+    private String getTasteString(Item item) {
+        int taste = ((BoozeFood)item).getTaste(); // bad design!
+        switch(taste) {
+            case 0:
+                return "nutty";
+            case 1:
+                return "spicy";
+            case 2:
+                return "sweet";
+            default:
+                return "strange";
+        }
     }
 }
