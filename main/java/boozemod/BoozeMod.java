@@ -1,6 +1,11 @@
 package boozemod;
 
 import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -8,10 +13,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import boozemod.ItemAcorn;
 import boozemod.BlockTeapot;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
+import boozemod.ModEvents;
 
 @Mod(modid = BoozeMod.MODID, version = BoozeMod.VERSION)
 public class BoozeMod
@@ -36,5 +38,8 @@ public class BoozeMod
         GameRegistry.register(acorn);
         GameRegistry.register(teapot);
         GameRegistry.register(teapotItemBlock.setRegistryName(teapot.getRegistryName()));
+
+        // Add mod events, including tooltip handler.
+        ModEvents.registerEvents();
     }
 }

@@ -9,14 +9,14 @@ import net.minecraft.world.World;
 import boozemod.TileEntityTeapot;
 
 //public class BlockTeapot extends Block implements ITileEntityProvider {
-public class BlockTeapot extends BlockContainer {
+public class BlockTeapot extends Block {
     public BlockTeapot() {
         super(Material.IRON);
         this.setUnlocalizedName("Teapot");
         this.setRegistryName("teapot");
     }
 
-/*    
+/*
     @Override
     public TileEntity createNewTileEntity(World worldIn, int meta) {
         return new TileEntityTeapot();

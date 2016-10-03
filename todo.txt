@@ -10,6 +10,22 @@ Research:
 -> Look into a way to have all alcohols under a single type.
 -> See if we can remove the vanilla cake recipe.
 
+NBT Research:
+-> import net.minecraft.nbt.NBTTagCompound
+-> use readFromNBT and writeToNBT
+-> it looks like [get|set][type]() is used for single pairs?
+-> i.e. short x = getShort('key');
+-> and setInteger('key', 1);
+-> these are operations on NBTTagCompound type
+
+Tooltip Research:
+-> relevant classes
+    * net.minecraft.util.text.TextFormatting
+    * net.minecraftforge.event.entity.player.ItemTooltipEvent
+-> involves @Subscribe and @SideOnly('Client')
+-> some sort of event gets called every time a tooltip is made
+-> use event.getTooltip().add('string')
+
 Blocks:
 -> Skillet
 -> Cutting Board
