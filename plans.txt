@@ -31,3 +31,42 @@ Texture/State Mechanics:
 -> Ingredients have one of many states.
 -> Meals are ingredient-agnostic combinations of ingredients.
 -> Meals are defined by a combination of states.
+
+Food States:
+-> Chunk
+-> Pieces
+-> Powder
+-> Paste
+-> Liquid
+
+Foods:
+->Steak - Chunk
+->Applesauce - Liquid
+Chicken Nuggets - Pieces
+Ice Cream - Paste
+Juice - Liquid
+Cake - Meal/Pie
+Mashed Potatoes - Paste
+Pizza - Meal/Pie
+Lasanga - Meal/Casserole
+Burritoes - Meal/Wrap
+Cheese Cubes - Pieces
+Sandwiches - Meal/Sandwich
+Big-Ass Sub Sandwich - Meal/Casserole
+Pork Chops - Chunk
+Stir Fry - Meal/Ricebowl
+General Tso's Chicken - Meal/Ricebowl
+Hummus - Paste
+Flour - Powder
+Sugar - Powder
+Cocoa - Powder
+Honey - Liquid
+Salt - Powder
+Herbs - Powder
+Crackers - Pieces
+Rice - Paste
+Pasta - Paste
+Oatmeal - Paste
+Spaghetti - Meal/Ricebowl
+Grapes - Pieces
+Booze - Liquid
