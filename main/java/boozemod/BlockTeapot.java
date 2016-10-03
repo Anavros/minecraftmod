@@ -15,7 +15,7 @@ public class BlockTeapot extends Block {
         this.setRegistryName("teapot");
     }
 
-/*    
+/*
     @Override
     public TileEntity createNewTileEntity(World worldIn, int meta) {
         return new TileEntityTeapot();
