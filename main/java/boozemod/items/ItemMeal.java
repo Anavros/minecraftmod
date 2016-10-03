@@ -1,4 +1,4 @@
-package boozemod;
+package boozemod.items;
 
 import java.util.Random;
 import net.minecraft.item.ItemFood;

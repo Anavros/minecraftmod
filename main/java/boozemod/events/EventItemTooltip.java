@@ -1,4 +1,4 @@
-package boozemod;
+package boozemod.events;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

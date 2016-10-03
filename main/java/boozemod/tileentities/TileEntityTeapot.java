@@ -1,4 +1,4 @@
-package boozemod;
+package boozemod.tileentities;
 
 import net.minecraft.tileentity.TileEntity;
 

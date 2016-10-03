@@ -1,6 +1,6 @@
-package boozemod;
+package boozemod.init;
 
-import boozemod.EventItemTooltip;
+import boozemod.events.EventItemTooltip;
 import net.minecraftforge.common.MinecraftForge;
 
 public class ModEvents {

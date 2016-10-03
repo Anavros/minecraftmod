@@ -11,11 +11,11 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-import boozemod.ItemAcorn;
-import boozemod.ItemPepper;
-import boozemod.ItemMeal; 
-import boozemod.BlockTeapot;
-import boozemod.ModEvents;
+import boozemod.items.ItemAcorn;
+import boozemod.items.ItemPepper;
+import boozemod.items.ItemMeal; 
+import boozemod.blocks.BlockTeapot;
+import boozemod.init.ModEvents;
 
 @Mod(modid = BoozeMod.MODID, version = BoozeMod.VERSION)
 public class BoozeMod

@@ -1,4 +1,4 @@
-package boozemod;
+package boozemod.items;
 
 import boozemod.BoozeFood;
 import net.minecraft.item.ItemFood;

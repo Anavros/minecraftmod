@@ -1,11 +1,11 @@
-package boozemod;
+package boozemod.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
-import boozemod.TileEntityTeapot;
+import boozemod.tileentities.TileEntityTeapot;
 
 //public class BlockTeapot extends Block implements ITileEntityProvider {
 public class BlockTeapot extends Block {
