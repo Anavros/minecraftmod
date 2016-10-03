@@ -1,10 +1,10 @@
 package boozemod;
 
-import net.minecraft.item.Item;
+import net.minecraft.item.ItemFood;
 
-public class ItemAcorn extends Item {
+public class ItemAcorn extends ItemFood {
     public ItemAcorn() {
-        super();
+        super(2, 1.5f, false);
         this.setUnlocalizedName("Acorn");
         this.setRegistryName("acorn");
     }
