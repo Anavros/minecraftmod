@@ -20,19 +20,29 @@ public class EventItemTooltip {
         // The tooltip only applies to BoozeFoods that are not null and have NBT data.
         if(item != null && item instanceof BoozeFood) {
             // assumes stack item will have nbt?
-            // is this any different than just setting a variable?
+            // we can force every stack to have nbt?
+            NBTTagCompound nbt;
+            if(!stack.hasTagCompound()) {
+                stack.setTagCompound(new NBTTagCompound());
+            }
+            nbt = stack.getTagCompound();
+
+            int code;
+            if(!nbt.hasKey("taste")) {
+                nbt.setInteger("taste", 3);
+            }
+            code = nbt.getInteger("taste");
+
             String tasteString;
-            tasteString = getTasteString(item);
+            tasteString = getTasteString(code);
             event.getToolTip().add("This food tastes " + tasteString + ".");
             event.getToolTip().add("This is an instance of BoozeFood.");
         }
         // if not BoozeFood, do nothing
     }
 
-    private String getTasteString(Item item) {
-        // all BoozeFood children should have getTaste, right?
-        int taste = ((BoozeFood)item).getTaste(); // bad design!
-        switch(taste) {
+    private String getTasteString(int code) {
+        switch(code) {
             case 0:
                 return "nutty";
             case 1:

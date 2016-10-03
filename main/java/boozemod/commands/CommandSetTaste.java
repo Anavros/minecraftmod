@@ -6,6 +6,7 @@ import net.minecraft.command.ICommand;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
@@ -88,10 +89,14 @@ public class CommandSetTaste implements ICommand {
         if(stack == null) return;
         Item item = stack.getItem();
         if(item == null || !(item instanceof BoozeFood)) return;
+        // now we have player, stack, and item
 
-        // finally
-        BoozeFood food = ((BoozeFood)item);
-        food.taste = tasteCode;
+        NBTTagCompound nbt;
+        if(!stack.hasTagCompound()) {
+            stack.setTagCompound(new NBTTagCompound());
+        }
+        nbt = stack.getTagCompound();
+        nbt.setInteger("taste", tasteCode);
         sender.addChatMessage(new TextComponentString("Set new taste code."));
     }
 }
