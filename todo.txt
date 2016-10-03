@@ -43,6 +43,7 @@ Blocks:
 -> Cutting Board
 -> Teapot
 -> Herb Garden
+-> Snack Platter
 
 Items (General):
 -> Herbs
