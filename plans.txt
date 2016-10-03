@@ -18,5 +18,16 @@ How to Differentiate from HarvestCraft: (We don't want to step on anyone's toes.
 -> Cooking mechanics are more involved than basic crafting.
 -> Lack of gardens and different methods of finding seeds.
 
+How to Differentiate from TerraFirmaCraft:
+-> More complex cooking mechanics.
+-> Food does not decay.
+-> Stacking mechanics are most likely going to be different.
+
 How to Integrate with Unrelated Mods:
 -> Utensils made from different materials may have different heating properties.
+
+Texture/State Mechanics:
+-> Foods are conceptually split into ingredients and meals.
+-> Ingredients have one of many states.
+-> Meals are ingredient-agnostic combinations of ingredients.
+-> Meals are defined by a combination of states.

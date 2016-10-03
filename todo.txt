@@ -1,14 +1,17 @@
+
+ Todo List (+Rough Notes)
+==========================
+
 Goals for the Day:
--> Make acorn edible.
--> Add NBT tags to something.
--> Enter custom titles and descriptions.
--> 
+-> Make acorn edible. +++
+-> Enter custom titles and descriptions. +++
+-> Add textures and names for items.
+-> Plan out food mechanics. +++
+-> Research dynamic texturing. +++
+-> Create a meal object that has varying tastes (random for now).
 
 Progress:
--> Create a block. ---
--> Create an item. ---
 -> Add model and texture to teapot block.
--> Make acorn test item edible.
 
 Research:
 -> Research a way to implement taste and texture mechanics.
@@ -30,6 +33,10 @@ Tooltip Research:
 -> involves @Subscribe and @SideOnly('Client')
 -> some sort of event gets called every time a tooltip is made
 -> use event.getTooltip().add('string')
+
+Dynamic Texture Research:
+-> tile entities can use a custom renderer
+-> maybe items can too?
 
 Blocks:
 -> Skillet
