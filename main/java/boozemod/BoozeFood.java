@@ -1,26 +1,38 @@
 package boozemod;
 
+import java.util.List;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BoozeFood extends ItemFood {
     public BoozeFood() {
-        // Assumes every food heals 5 half-haunches and 2.5 sat.
         // Temporary until we override healing values per NBT attributes.
-        super(5, 2.5f, false);
+        super(1, 0.0f, false);
     }
 
+    @Override
+    @SideOnly(Side.CLIENT)
     // Creates a string description of a food using its taste data.
     // Data is stored in each ItemStack's NBT tags.
     // If an ItemStack does not have NBT tags, they will be added.
-    // This might not be the best place for this function.
-    public static String description(ItemStack stack) {
+    public void addInformation(
+            ItemStack stack,
+            EntityPlayer player,
+            List tooltip,
+            boolean detailed)
+    {
         int t;
         int s;
         int h;
-        Item item;
+        String taste;
+        String sweet;
+        String heavy;
         NBTTagCompound nbt;
         String desc;
 
@@ -39,9 +51,6 @@ public class BoozeFood extends ItemFood {
         if(!nbt.hasKey("heavy")) nbt.setInteger("heavy", 3);
         h = nbt.getInteger("heavy");
 
-        String taste;
-        String sweet;
-        String heavy;
         switch(t) {
             case 0: taste = "nutty"; break;
             case 1: taste = "spicy"; break;
@@ -60,7 +69,12 @@ public class BoozeFood extends ItemFood {
             case 2: heavy = "heavy"; break;
             default: heavy = "ethereal"; break;
         }
-        return String.format("This food is %s, %s, and %s.", taste, sweet, heavy);
+        tooltip.add(String.format("This food is %s, %s, and %s.", taste, sweet, heavy));
+        if(detailed) {
+            tooltip.add(String.format("Taste: %s (%d)", taste, Integer.toString(t)));
+            tooltip.add(String.format("Sweet: %s (%d)", sweet, Integer.toString(s)));
+            tooltip.add(String.format("Heavy: %s (%d)", heavy, Integer.toString(h)));
+        }
     }
 
     public static void setAttributes(ItemStack stack, int taste, int sweet, int heavy) {

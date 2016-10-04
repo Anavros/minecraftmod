@@ -5,7 +5,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 
@@ -22,7 +21,6 @@ import boozemod.items.ItemPepper;
 import boozemod.items.ItemMeal;
 import boozemod.items.ItemDrink;
 import boozemod.blocks.BlockTeapot;
-import boozemod.init.ModEvents;
 import boozemod.init.ModCommands;
 import boozemod.init.ModRecipes;
 
@@ -72,12 +70,8 @@ public class BoozeMod
         GameRegistry.register(teapot);
         GameRegistry.register(teapotItemBlock.setRegistryName(teapot.getRegistryName()));
 
-        //init recipies
+        // init recipies
         ModRecipes.register(acorn);
-
-        // Add mod events, including tooltip handler.
-        ModEvents.registerEvents();
-
     }
 
     @EventHandler
