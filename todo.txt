@@ -3,20 +3,13 @@
 ==========================
 
 Goals for the Day:
--> Make acorn edible. +++
--> Enter custom titles and descriptions. +++
--> Add textures and names for items.
--> Plan out food mechanics. +++
--> Research dynamic texturing. +++
--> Create a meal object that has varying tastes (random for now).
-
-Progress:
--> Add model and texture to teapot block.
+-> Add example crafting recipes for items.
+-> Implement more taste/texture variables.
+-> Use a function to nicely format a description string.
 
 Research:
--> Research a way to implement taste and texture mechanics.
--> Look into a way to have all alcohols under a single type.
--> See if we can remove the vanilla cake recipe.
+-> See if we can remove the vanilla cake recipe. (not important right now)
+-> How do we ensure every BoozeFood has full NBT tags?
 
 NBT Research:
 -> import net.minecraft.nbt.NBTTagCompound
@@ -24,7 +17,13 @@ NBT Research:
 -> it looks like [get|set][type]() is used for single pairs?
 -> i.e. short x = getShort('key');
 -> and setInteger('key', 1);
+-> use hasKey('key') to check for keys
 -> these are operations on NBTTagCompound type
+-> custom nbt-aware crafting recipes can be made
+-> implement IRecipe and use GameRegistry.addRecipe(MyRecipeClass())
+
+ItemStack NBT Data Research:
+-> ItemStacks can be created by /give, crafting, or creative inventory.
 
 Tooltip Research:
 -> relevant classes

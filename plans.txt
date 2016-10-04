@@ -39,34 +39,41 @@ Food States:
 -> Paste
 -> Liquid
 
+Food Taste:
+-> Three dimensions: sweet/savory, light/heavy, and acidic/fatty.
+-> Maybe light/heavy and acidic/fatty can be combined.
+-> Something like salt would lean something towards savory.
+-> So maybe just sweet/mild/savory and light/medium/heavy.
+
 Foods:
-->Steak - Chunk
-->Applesauce - Liquid
-Chicken Nuggets - Pieces
-Ice Cream - Paste
-Juice - Liquid
-Cake - Meal/Pie
-Mashed Potatoes - Paste
-Pizza - Meal/Pie
-Lasanga - Meal/Casserole
-Burritoes - Meal/Wrap
-Cheese Cubes - Pieces
-Sandwiches - Meal/Sandwich
-Big-Ass Sub Sandwich - Meal/Casserole
-Pork Chops - Chunk
-Stir Fry - Meal/Ricebowl
-General Tso's Chicken - Meal/Ricebowl
-Hummus - Paste
+->Steak - Chunk; Savory-Heavy-Fatty
+->Applesauce - Liquid; Sweet-Light-Acidic
+Chicken Nuggets - Pieces; Savory-Heavy-Fatty
+Ice Cream - Paste; Sweet-Heavy-Fatty
+Juice - Liquid; Sweet-Light-Acidic
+Cake - Meal/Pie; Sweet-Heavy-Fatty
+Mashed Potatoes - Paste; Savory-Average-Average
+Pizza - Meal/Pie; Savory-Heavy
+Lasanga - Meal/Casserole; Savory-Heavy
+Burritoes - Meal/Wrap; Savory-Heavy
+Cheese Cubes - Pieces; Savory-Heavy
+Sandwiches - Meal/Sandwich; Savory-Average
+Big-Ass Sub Sandwich - Meal/Casserole; Savory-Heavy
+Pork Chops - Chunk; Savory-Heavy
+Stir Fry - Meal/Ricebowl; Savory-Heavy
+General Tso's Chicken - Meal/Ricebowl; Savory-Heavy
+Hummus - Paste; Savory-Light
 Flour - Powder
 Sugar - Powder
 Cocoa - Powder
 Honey - Liquid
 Salt - Powder
 Herbs - Powder
-Crackers - Pieces
-Rice - Paste
-Pasta - Paste
-Oatmeal - Paste
-Spaghetti - Meal/Ricebowl
-Grapes - Pieces
-Booze - Liquid
+Crackers - Pieces; Mild-Light
+Rice - Paste; Mild-Heavy
+Pasta - Paste; Mild-Heavy
+Oatmeal - Paste; Sweet-Heavy
+Spaghetti - Meal/Ricebowl; Savory-Heavy
+Grapes - Pieces; Sweet-Light
+Booze - Liquid; Savory-Light
+Salad - Meal/Pieces; Savory-Light

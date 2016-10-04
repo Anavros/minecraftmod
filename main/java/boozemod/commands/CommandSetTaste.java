@@ -67,36 +67,41 @@ public class CommandSetTaste implements ICommand {
     public void execute(MinecraftServer server, ICommandSender sender, String[] args)
         throws CommandException
     {
+        int taste;
+        int sweet;
+        int heavy;
+        String argError = "Requires taste, sweetness, and heaviness args.";
+        String intError = "Arguments must all be integers.";
+        String success = "Successfully set new food attributes.";
+        EntityPlayer player;
+        ItemStack stack;
+        Item item;
+
+        // Only execute if on a server?
         if(sender.getEntityWorld().isRemote) return;
-        sender.addChatMessage(new TextComponentString("Do something!"));
-        if(args.length != 1) {
-            sender.addChatMessage(new TextComponentString("Wrong number of args."));
+        if(args.length != 3) {
+            sender.addChatMessage(new TextComponentString(argError));
             return;
         }
-        int tasteCode;
         try {
-            tasteCode = Integer.parseInt(args[0]);
+            taste = Integer.parseInt(args[0]);
+            sweet = Integer.parseInt(args[1]);
+            heavy = Integer.parseInt(args[2]);
         } catch (NumberFormatException e) {
-            sender.addChatMessage(new TextComponentString("Argument must be integer!"));
+            sender.addChatMessage(new TextComponentString(intError));
             return;
         }
-        // so now we have an integer tastecode
+        // so now we have three integer codes.
 
         // next goal is to get the item the player is holding
-        EntityPlayer player = ((EntityPlayer)sender.getCommandSenderEntity());
+        player = ((EntityPlayer)sender.getCommandSenderEntity());
         if(player == null) return;
-        ItemStack stack = player.inventory.getCurrentItem();
+        stack = player.inventory.getCurrentItem();
         if(stack == null) return;
-        Item item = stack.getItem();
+        item = stack.getItem();
         if(item == null || !(item instanceof BoozeFood)) return;
         // now we have player, stack, and item
-
-        NBTTagCompound nbt;
-        if(!stack.hasTagCompound()) {
-            stack.setTagCompound(new NBTTagCompound());
-        }
-        nbt = stack.getTagCompound();
-        nbt.setInteger("taste", tasteCode);
-        sender.addChatMessage(new TextComponentString("Set new taste code."));
+        BoozeFood.setAttributes(stack, taste, sweet, heavy);
+        sender.addChatMessage(new TextComponentString(success));
     }
 }
