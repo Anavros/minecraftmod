@@ -23,6 +23,7 @@ import boozemod.items.ItemMeal;
 import boozemod.blocks.BlockTeapot;
 import boozemod.init.ModEvents;
 import boozemod.init.ModCommands;
+import boozemod.init.ModRecipes;
 
 @Mod(modid = BoozeMod.MODID, version = BoozeMod.VERSION)
 public class BoozeMod
@@ -64,8 +65,12 @@ public class BoozeMod
         GameRegistry.register(teapot);
         GameRegistry.register(teapotItemBlock.setRegistryName(teapot.getRegistryName()));
 
+        //init recipies
+        ModRecipes.register(acorn);
+
         // Add mod events, including tooltip handler.
         ModEvents.registerEvents();
+
     }
 
     @EventHandler
