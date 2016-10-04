@@ -19,38 +19,7 @@ public class EventItemTooltip {
 
         // The tooltip only applies to BoozeFoods that are not null and have NBT data.
         if(item != null && item instanceof BoozeFood) {
-            // assumes stack item will have nbt?
-            // we can force every stack to have nbt?
-            NBTTagCompound nbt;
-            if(!stack.hasTagCompound()) {
-                stack.setTagCompound(new NBTTagCompound());
-            }
-            nbt = stack.getTagCompound();
-
-            int code;
-            if(!nbt.hasKey("taste")) {
-                nbt.setInteger("taste", 3);
-            }
-            code = nbt.getInteger("taste");
-
-            String tasteString;
-            tasteString = getTasteString(code);
-            event.getToolTip().add("This food tastes " + tasteString + ".");
-            event.getToolTip().add("This is an instance of BoozeFood.");
-        }
-        // if not BoozeFood, do nothing
-    }
-
-    private String getTasteString(int code) {
-        switch(code) {
-            case 0:
-                return "nutty";
-            case 1:
-                return "spicy";
-            case 2:
-                return "sweet";
-            default:
-                return "strange";
+            event.getToolTip().add(BoozeFood.description(stack));
         }
     }
 }
