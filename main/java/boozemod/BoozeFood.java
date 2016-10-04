@@ -6,9 +6,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
 public class BoozeFood extends ItemFood {
-    // how do we ensure every BoozeFood ItemStack has nbt tags?
-    public BoozeFood(int healAmount, float saturation, int taste) {
-        super(healAmount, saturation, false);
+    public BoozeFood() {
+        // Assumes every food heals 5 half-haunches and 2.5 sat.
+        // Temporary until we override healing values per NBT attributes.
+        super(5, 2.5f, false);
     }
 
     // Creates a string description of a food using its taste data.

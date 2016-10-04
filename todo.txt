@@ -3,9 +3,9 @@
 ==========================
 
 Goals for the Day:
--> Add example crafting recipes for items.
--> Implement more taste/texture variables.
--> Use a function to nicely format a description string.
+-> Create textures for different ingredient states and meal types.
+-> Vary food texture depending on NBT tags.
+-> Add basic drinks.
 
 Research:
 -> See if we can remove the vanilla cake recipe. (not important right now)

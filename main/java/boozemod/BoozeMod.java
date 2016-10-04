@@ -20,6 +20,7 @@ import net.minecraftforge.client.model.ModelLoader;
 import boozemod.items.ItemAcorn;
 import boozemod.items.ItemPepper;
 import boozemod.items.ItemMeal;
+import boozemod.items.ItemDrink;
 import boozemod.blocks.BlockTeapot;
 import boozemod.init.ModEvents;
 import boozemod.init.ModCommands;
@@ -34,6 +35,7 @@ public class BoozeMod
     private static ItemAcorn acorn;
     private static ItemPepper pepper;
     private static ItemMeal meal;
+    private static ItemDrink drink;
     private static BlockTeapot teapot;
     private static ItemBlock teapotItemBlock;
 
@@ -53,10 +55,15 @@ public class BoozeMod
             "boozemod:pepper", "inventory"));
         GameRegistry.register(pepper);
 
-        meal = new ItemMeal(); // can't do that in constructor?
+        meal = new ItemMeal();
         ModelLoader.setCustomModelResourceLocation(meal, 0, new ModelResourceLocation(
             "boozemod:meal", "inventory"));
         GameRegistry.register(meal);
+
+        drink = new ItemDrink();
+        ModelLoader.setCustomModelResourceLocation(drink, 0, new ModelResourceLocation(
+            "boozemod:drink", "inventory"));
+        GameRegistry.register(drink);
 
         // init blocks
         teapot = new BlockTeapot();
