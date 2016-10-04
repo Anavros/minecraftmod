@@ -5,7 +5,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 
@@ -70,7 +69,8 @@ public class BoozeMod
         teapotItemBlock = new ItemBlock(teapot);
         GameRegistry.register(teapot);
         GameRegistry.register(teapotItemBlock.setRegistryName(teapot.getRegistryName()));
-        //init recipies
+
+        // init recipies
         ModRecipes.register(acorn);
     }
 
