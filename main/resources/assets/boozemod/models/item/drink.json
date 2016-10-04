@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "minecraft:items/potion"
+        "layer0": "boozemod:items/drink"
     }
 }
