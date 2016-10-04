@@ -101,7 +101,7 @@ public class CommandSetTaste implements ICommand {
         item = stack.getItem();
         if(item == null || !(item instanceof BoozeFood)) return;
         // now we have player, stack, and item
-        BoozeFood.setAttributes(stack, taste, sweet, heavy);
+        BoozeFood.setFlavor(stack, taste, sweet, heavy);
         sender.addChatMessage(new TextComponentString(success));
     }
 }

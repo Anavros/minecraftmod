@@ -25,16 +25,43 @@ public class BoozeFood extends ItemFood {
             ItemStack stack,
             EntityPlayer player,
             List tooltip,
-            boolean detailed)
+            boolean advanced)  // not sure what this does? hold shift for adv. details?
     {
-        int t;
-        int s;
-        int h;
+        int[] flavor;
         String taste;
         String sweet;
         String heavy;
         NBTTagCompound nbt;
         String desc;
+
+        flavor = getFlavor(stack);
+        switch(flavor[0]) {
+            case 0: taste = "nutty"; break;
+            case 1: taste = "spicy"; break;
+            case 2: taste = "sweet"; break;
+            default: taste = "strange"; break;
+        }
+        switch(flavor[1]) {
+            case 0: sweet = "savory"; break;
+            case 1: sweet = "mild"; break;
+            case 2: sweet = "sweet"; break;
+            default: sweet = "bitter"; break;
+        }
+        switch(flavor[2]) {
+            case 0: heavy = "light"; break;
+            case 1: heavy = "medium"; break;
+            case 2: heavy = "heavy"; break;
+            default: heavy = "ethereal"; break;
+        }
+        tooltip.add(String.format("This food is %s, %s, and %s.", taste, sweet, heavy));
+    }
+
+    // Get three flavor variables from an ItemStack.
+    // NBT data is saved per-stack, not per-class, so each food can be different.
+    // If the food does not have NBT tags already, add stubs.
+    public static int[] getFlavor(ItemStack stack) {
+        int[] flavor = new int[3];
+        NBTTagCompound nbt;
 
         // Ensure every stack has at least an empty NBT compound.
         if(!stack.hasTagCompound()) stack.setTagCompound(new NBTTagCompound());
@@ -43,41 +70,17 @@ public class BoozeFood extends ItemFood {
 
         // taste -> 0:nutty 1:spicy 2:sweet 3:strange TODO to be removed
         if(!nbt.hasKey("taste")) nbt.setInteger("taste", 3);
-        t = nbt.getInteger("taste");
+        flavor[0] = nbt.getInteger("taste");
         // sweet -> 0:savory 1:mild 2:sweet 3:bitter
         if(!nbt.hasKey("sweet")) nbt.setInteger("sweet", 3);
-        s = nbt.getInteger("sweet");
+        flavor[1] = nbt.getInteger("sweet");
         // heavy -> 0:light 1:medium 2:heavy 3:ethereal
         if(!nbt.hasKey("heavy")) nbt.setInteger("heavy", 3);
-        h = nbt.getInteger("heavy");
-
-        switch(t) {
-            case 0: taste = "nutty"; break;
-            case 1: taste = "spicy"; break;
-            case 2: taste = "sweet"; break;
-            default: taste = "strange"; break;
-        }
-        switch(s) {
-            case 0: sweet = "savory"; break;
-            case 1: sweet = "mild"; break;
-            case 2: sweet = "sweet"; break;
-            default: sweet = "bitter"; break;
-        }
-        switch(h) {
-            case 0: heavy = "light"; break;
-            case 1: heavy = "medium"; break;
-            case 2: heavy = "heavy"; break;
-            default: heavy = "ethereal"; break;
-        }
-        tooltip.add(String.format("This food is %s, %s, and %s.", taste, sweet, heavy));
-        if(detailed) {
-            tooltip.add(String.format("Taste: %s (%d)", taste, Integer.toString(t)));
-            tooltip.add(String.format("Sweet: %s (%d)", sweet, Integer.toString(s)));
-            tooltip.add(String.format("Heavy: %s (%d)", heavy, Integer.toString(h)));
-        }
+        flavor[1] = nbt.getInteger("heavy");
+        return flavor;
     }
 
-    public static void setAttributes(ItemStack stack, int taste, int sweet, int heavy) {
+    public static void setFlavor(ItemStack stack, int taste, int sweet, int heavy) {
         NBTTagCompound nbt;
         // Ensure every stack has at least an empty NBT compound.
         if(!stack.hasTagCompound()) stack.setTagCompound(new NBTTagCompound());

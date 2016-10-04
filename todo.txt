@@ -3,9 +3,7 @@
 ==========================
 
 Goals for the Day:
--> Create textures for different ingredient states and meal types.
 -> Vary food texture depending on NBT tags.
--> Add basic drinks.
 
 Research:
 -> See if we can remove the vanilla cake recipe. (not important right now)
