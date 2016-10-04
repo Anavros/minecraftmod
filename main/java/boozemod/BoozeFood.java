@@ -10,6 +10,8 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import boozemod.blocks.BlockChopping;
+
 public class BoozeFood extends ItemFood {
     public BoozeFood() {
         // Temporary until we override healing values per NBT attributes.
@@ -90,4 +92,22 @@ public class BoozeFood extends ItemFood {
         nbt.setInteger("sweet", sweet);
         nbt.setInteger("heavy", heavy);
     }
+
+    /*
+    // Probably won't work, because on right click the player should eat the food, right?
+    // Unless we can code that explicitly in this function.
+    @Override
+    public EnumActionResult onItemUse(
+            ItemStack stack,
+            EntityPlayer player,
+            World world,
+            BlockPos pos,
+            EnumHand hand,
+            EnumFacing facing,
+            float hitX,
+            float hitY,
+            float hitZ)
+    {
+    }
+    */
 }
