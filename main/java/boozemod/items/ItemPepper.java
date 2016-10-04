@@ -5,16 +5,19 @@ import boozemod.BoozeFood;
 //import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 //import net.minecraft.client.renderer.color.IItemColor;
+//import net.minecraft.client.renderer.color.ItemColors; // ???
 
-public class ItemPepper extends BoozeFood {
+public class ItemPepper extends BoozeFood { //implements IItemColor {
     public ItemPepper() {
         super();
         this.setUnlocalizedName("Pepper");
         this.setRegistryName("pepper");
     }
 
-    //@Override
     // Adds a color multiplier on the ItemStack's texture.
+    // This just straight-up doesn't work.
+    // There's some over-complicated model manager way to do it now.
+    //@Override
     //public int getColorFromItemstack(ItemStack stack, int layer) {
         // assume layer 0 for now
         //int c;
@@ -26,5 +29,6 @@ public class ItemPepper extends BoozeFood {
             //default: c = Color.BLACK.getRGB(); break;
         //}
         //return c;
+        //return 0xFF0000;
     //}
 }
