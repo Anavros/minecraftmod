@@ -1,29 +1,23 @@
 package boozemod;
 
-import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-
+import net.minecraft.item.ItemBlock;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.client.model.ModelLoader;
 
-import boozemod.items.ItemAcorn;
-import boozemod.items.ItemPepper;
-import boozemod.items.ItemMeal;
-import boozemod.items.ItemDrink;
-import boozemod.blocks.BlockTeapot;
 import boozemod.blocks.BlockChopping;
+import boozemod.blocks.BlockTeapot;
 import boozemod.init.ModCommands;
 import boozemod.init.ModRecipes;
+import boozemod.items.ItemAcorn;
+import boozemod.items.ItemDrink;
+import boozemod.items.ItemMeal;
+import boozemod.items.ItemPepper;
 
 @Mod(modid = BoozeMod.MODID, version = BoozeMod.VERSION)
 public class BoozeMod
