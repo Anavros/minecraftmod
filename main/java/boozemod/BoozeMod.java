@@ -23,6 +23,7 @@ import boozemod.items.ItemMeal;
 import boozemod.items.ItemDrink;
 import boozemod.blocks.BlockTeapot;
 import boozemod.init.ModCommands;
+import boozemod.init.ModRecipes;
 
 @Mod(modid = BoozeMod.MODID, version = BoozeMod.VERSION)
 public class BoozeMod
@@ -69,6 +70,8 @@ public class BoozeMod
         teapotItemBlock = new ItemBlock(teapot);
         GameRegistry.register(teapot);
         GameRegistry.register(teapotItemBlock.setRegistryName(teapot.getRegistryName()));
+        //init recipies
+        ModRecipes.register(acorn);
     }
 
     @EventHandler
