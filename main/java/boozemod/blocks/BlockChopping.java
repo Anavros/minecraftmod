@@ -39,9 +39,13 @@ public class BlockChopping extends Block {
         if(item != null && item instanceof BoozeFood) {
             int[] flavor = BoozeFood.getFlavor(stack);
             // for right now, we'll set the taste to nutty (0) if it is strange (3)
-            if(flavor[0] == 3) {
-                BoozeFood.setFlavor(stack, 0, flavor[1], flavor[2]);
-                System.out.println("I did it!");
+            int state = flavor[3];
+            if(state == 0) { // 0: chunk
+                BoozeFood.setFlavor(stack, flavor[0], flavor[1], flavor[2], 1); // 1: pieces
+                System.out.println("Chopped chunk into pieces.");
+            } else if(state==1) {
+                BoozeFood.setFlavor(stack, flavor[0], flavor[1], flavor[2], 2); // 2: paste
+                System.out.println("Mashed pieces into paste.");
             } else {
                 System.out.println("Not the right flavor.");
             }

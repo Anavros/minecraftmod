@@ -70,6 +70,7 @@ public class CommandSetTaste implements ICommand {
         int taste;
         int sweet;
         int heavy;
+        int state;
         String argError = "Requires taste, sweetness, and heaviness args.";
         String intError = "Arguments must all be integers.";
         String success = "Successfully set new food attributes.";
@@ -79,7 +80,7 @@ public class CommandSetTaste implements ICommand {
 
         // Only execute if on a server?
         if(sender.getEntityWorld().isRemote) return;
-        if(args.length != 3) {
+        if(args.length != 4) {
             sender.addChatMessage(new TextComponentString(argError));
             return;
         }
@@ -87,6 +88,7 @@ public class CommandSetTaste implements ICommand {
             taste = Integer.parseInt(args[0]);
             sweet = Integer.parseInt(args[1]);
             heavy = Integer.parseInt(args[2]);
+            state = Integer.parseInt(args[3]);
         } catch (NumberFormatException e) {
             sender.addChatMessage(new TextComponentString(intError));
             return;
@@ -101,7 +103,7 @@ public class CommandSetTaste implements ICommand {
         item = stack.getItem();
         if(item == null || !(item instanceof BoozeFood)) return;
         // now we have player, stack, and item
-        BoozeFood.setFlavor(stack, taste, sweet, heavy);
+        BoozeFood.setFlavor(stack, taste, sweet, heavy, state);
         sender.addChatMessage(new TextComponentString(success));
     }
 }

@@ -33,6 +33,7 @@ public class BoozeFood extends ItemFood {
         String taste;
         String sweet;
         String heavy;
+        String state;
         NBTTagCompound nbt;
         String desc;
 
@@ -55,14 +56,22 @@ public class BoozeFood extends ItemFood {
             case 2: heavy = "heavy"; break;
             default: heavy = "ethereal"; break;
         }
-        tooltip.add(String.format("This food is %s, %s, and %s.", taste, sweet, heavy));
+        switch(flavor[3]) {
+            case 0: state = "chunk"; break;
+            case 1: state = "bunch of pieces"; break;
+            case 2: state = "paste"; break;
+            default: state = "liquid"; break;
+        }
+        tooltip.add(String.format("This food is a %s.", state));
+        tooltip.add(String.format("It tastes %s.", taste));
+        tooltip.add(String.format("It is %s and %s on the tongue.", sweet, heavy));
     }
 
     // Get three flavor variables from an ItemStack.
     // NBT data is saved per-stack, not per-class, so each food can be different.
     // If the food does not have NBT tags already, add stubs.
     public static int[] getFlavor(ItemStack stack) {
-        int[] flavor = new int[3];
+        int[] flavor = new int[4];
         NBTTagCompound nbt;
 
         // Ensure every stack has at least an empty NBT compound.
@@ -78,11 +87,14 @@ public class BoozeFood extends ItemFood {
         flavor[1] = nbt.getInteger("sweet");
         // heavy -> 0:light 1:medium 2:heavy 3:ethereal
         if(!nbt.hasKey("heavy")) nbt.setInteger("heavy", 3);
-        flavor[1] = nbt.getInteger("heavy");
+        flavor[2] = nbt.getInteger("heavy");
+        // state -> 0:chunk 1:pieces 2:paste 3:liquid
+        if(!nbt.hasKey("state")) nbt.setInteger("state", 3);
+        flavor[3] = nbt.getInteger("state");
         return flavor;
     }
 
-    public static void setFlavor(ItemStack stack, int taste, int sweet, int heavy) {
+    public static void setFlavor(ItemStack stack, int taste, int sweet, int heavy, int state) {
         NBTTagCompound nbt;
         // Ensure every stack has at least an empty NBT compound.
         if(!stack.hasTagCompound()) stack.setTagCompound(new NBTTagCompound());
@@ -91,6 +103,7 @@ public class BoozeFood extends ItemFood {
         nbt.setInteger("taste", taste);
         nbt.setInteger("sweet", sweet);
         nbt.setInteger("heavy", heavy);
+        nbt.setInteger("state", state);
     }
 
     /*
