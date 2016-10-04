@@ -21,6 +21,7 @@ import boozemod.items.ItemPepper;
 import boozemod.items.ItemMeal;
 import boozemod.items.ItemDrink;
 import boozemod.blocks.BlockTeapot;
+import boozemod.blocks.BlockChopping;
 import boozemod.init.ModCommands;
 import boozemod.init.ModRecipes;
 
@@ -37,6 +38,8 @@ public class BoozeMod
     private static ItemDrink drink;
     private static BlockTeapot teapot;
     private static ItemBlock teapotItemBlock;
+    private static BlockChopping chopper;
+    private static ItemBlock chopperItemBlock;
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
@@ -69,6 +72,11 @@ public class BoozeMod
         teapotItemBlock = new ItemBlock(teapot);
         GameRegistry.register(teapot);
         GameRegistry.register(teapotItemBlock.setRegistryName(teapot.getRegistryName()));
+
+        chopper = new BlockChopping();
+        chopperItemBlock = new ItemBlock(chopper);
+        GameRegistry.register(chopper);
+        GameRegistry.register(chopperItemBlock.setRegistryName(chopper.getRegistryName()));
 
         // init recipies
         ModRecipes.register(acorn);
