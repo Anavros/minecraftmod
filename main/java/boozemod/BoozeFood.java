@@ -3,15 +3,11 @@ package boozemod;
 import java.util.List;
 
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import boozemod.blocks.BlockChopping;
 
 public class BoozeFood extends ItemFood {
     public BoozeFood() {
@@ -37,6 +33,13 @@ public class BoozeFood extends ItemFood {
     public String getUnlocalizedName(ItemStack stack) {
         String[] s = getFlavorStrings(stack);
         return String.format("%s %s %s %s", s[0], s[1], s[2], s[3]);
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public String getItemStackDisplayName(ItemStack stack) {
+        String[] s = getFlavorStrings(stack);
+        return String.format("A %s, %s, %s, %s food.", s[0], s[1], s[2], s[3]);
     }
 
     @Override
