@@ -9,8 +9,8 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BoozeFood extends ItemFood {
-    public BoozeFood() {
+public class DynamicFood extends ItemFood {
+    public DynamicFood() {
         // Temporary until we override healing values per NBT attributes.
         super(0, 0.0f, false);
     }

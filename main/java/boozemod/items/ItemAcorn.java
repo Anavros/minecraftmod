@@ -1,9 +1,8 @@
 package boozemod.items;
 
-import boozemod.BoozeFood;
-import net.minecraft.item.ItemFood;
+import boozemod.DynamicFood;
 
-public class ItemAcorn extends BoozeFood {
+public class ItemAcorn extends DynamicFood {
     public ItemAcorn() {
         super();
         this.setUnlocalizedName("Acorn");

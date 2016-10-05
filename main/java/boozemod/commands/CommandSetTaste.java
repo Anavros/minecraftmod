@@ -6,14 +6,13 @@ import net.minecraft.command.ICommand;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-import boozemod.BoozeFood;
+import boozemod.DynamicFood;
 
 public class CommandSetTaste implements ICommand {
     // not sure if needed?
@@ -101,9 +100,9 @@ public class CommandSetTaste implements ICommand {
         stack = player.inventory.getCurrentItem();
         if(stack == null) return;
         item = stack.getItem();
-        if(item == null || !(item instanceof BoozeFood)) return;
+        if(item == null || !(item instanceof DynamicFood)) return;
         // now we have player, stack, and item
-        BoozeFood.setFlavor(stack, taste, sweet, heavy, state);
+        DynamicFood.setFlavor(stack, taste, sweet, heavy, state);
         sender.addChatMessage(new TextComponentString(success));
     }
 }

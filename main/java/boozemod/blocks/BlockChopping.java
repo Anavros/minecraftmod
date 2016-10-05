@@ -11,7 +11,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.entity.player.EntityPlayer;
 
-import boozemod.BoozeFood;
+import boozemod.DynamicFood;
 
 public class BlockChopping extends Block {
     public BlockChopping() {
@@ -33,24 +33,24 @@ public class BlockChopping extends Block {
             float hitY,
             float hitZ)
     {
-        // check if the stack item is a child of BoozeFood
+        // check if the stack item is a child of DynamicFood
         if(stack == null) return false;
         Item item = stack.getItem();
-        if(item != null && item instanceof BoozeFood) {
-            int[] flavor = BoozeFood.getFlavor(stack);
+        if(item != null && item instanceof DynamicFood) {
+            int[] flavor = DynamicFood.getFlavor(stack);
             // for right now, we'll set the taste to nutty (0) if it is strange (3)
             int state = flavor[3];
             if(state == 0) { // 0: chunk
-                BoozeFood.setFlavor(stack, flavor[0], flavor[1], flavor[2], 1); // 1: pieces
+                DynamicFood.setFlavor(stack, flavor[0], flavor[1], flavor[2], 1); // 1: pieces
                 System.out.println("Chopped chunk into pieces.");
             } else if(state==1) {
-                BoozeFood.setFlavor(stack, flavor[0], flavor[1], flavor[2], 2); // 2: paste
+                DynamicFood.setFlavor(stack, flavor[0], flavor[1], flavor[2], 2); // 2: paste
                 System.out.println("Mashed pieces into paste.");
             } else {
                 System.out.println("Not the right flavor.");
             }
         } else {
-            System.out.println("Null item or not an instance of BoozeFood.");
+            System.out.println("Null item or not an instance of DynamicFood.");
         }
         return true;
     }

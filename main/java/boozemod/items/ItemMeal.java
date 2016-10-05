@@ -1,8 +1,8 @@
 package boozemod.items;
 
-import boozemod.BoozeFood;
+import boozemod.DynamicFood;
 
-public class ItemMeal extends BoozeFood {
+public class ItemMeal extends DynamicFood {
     public ItemMeal() {
         super();
         this.setUnlocalizedName("Meal");

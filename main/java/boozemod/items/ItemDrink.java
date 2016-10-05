@@ -1,11 +1,10 @@
 package boozemod.items;
 
-import boozemod.BoozeFood;
-import net.minecraft.item.ItemFood;
+import boozemod.DynamicFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.EnumAction;
 
-public class ItemDrink extends BoozeFood {
+public class ItemDrink extends DynamicFood {
     public ItemDrink() {
         super();
         this.setUnlocalizedName("Drink");
