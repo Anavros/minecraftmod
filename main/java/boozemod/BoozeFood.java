@@ -1,12 +1,13 @@
 package boozemod;
 
 import java.util.List;
+
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -20,6 +21,13 @@ public class BoozeFood extends ItemFood {
 
     @Override
     @SideOnly(Side.CLIENT)
+    public String getUnlocalizedName(ItemStack stack) {
+        String[] s = getFlavorStrings(stack);
+        return String.format("%s %s %s %s", s[0], s[1], s[2], s[3]);
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
     // Creates a string description of a food using its taste data.
     // Data is stored in each ItemStack's NBT tags.
     // If an ItemStack does not have NBT tags, they will be added.
@@ -29,42 +37,40 @@ public class BoozeFood extends ItemFood {
             List tooltip,
             boolean advanced)  // not sure what this does? hold shift for adv. details?
     {
-        int[] flavor;
-        String taste;
-        String sweet;
-        String heavy;
-        String state;
-        NBTTagCompound nbt;
-        String desc;
+        String[] strings = getFlavorStrings(stack);
+        tooltip.add(String.format("This food is a %s.", strings[3]));
+        tooltip.add(String.format("It tastes %s.", strings[0]));
+        tooltip.add(String.format("It is %s and %s on the tongue.", strings[1], strings[2]));
+    }
 
-        flavor = getFlavor(stack);
+    private static String[] getFlavorStrings(ItemStack stack) {
+        String[] strings = new String[4];
+        int[] flavor = getFlavor(stack);
         switch(flavor[0]) {
-            case 0: taste = "nutty"; break;
-            case 1: taste = "spicy"; break;
-            case 2: taste = "sweet"; break;
-            default: taste = "strange"; break;
+            case 0: strings[0] = "nutty"; break;
+            case 1: strings[0] = "spicy"; break;
+            case 2: strings[0] = "sweet"; break;
+            default: strings[0] = "strange"; break;
         }
         switch(flavor[1]) {
-            case 0: sweet = "savory"; break;
-            case 1: sweet = "mild"; break;
-            case 2: sweet = "sweet"; break;
-            default: sweet = "bitter"; break;
+            case 0: strings[1] = "savory"; break;
+            case 1: strings[1] = "mild"; break;
+            case 2: strings[1] = "sweet"; break;
+            default: strings[1] = "bitter"; break;
         }
         switch(flavor[2]) {
-            case 0: heavy = "light"; break;
-            case 1: heavy = "medium"; break;
-            case 2: heavy = "heavy"; break;
-            default: heavy = "ethereal"; break;
+            case 0: strings[2] = "light"; break;
+            case 1: strings[2] = "medium"; break;
+            case 2: strings[2] = "heavy"; break;
+            default: strings[2] = "ethereal"; break;
         }
         switch(flavor[3]) {
-            case 0: state = "chunk"; break;
-            case 1: state = "bunch of pieces"; break;
-            case 2: state = "paste"; break;
-            default: state = "liquid"; break;
+            case 0: strings[3] = "chunk"; break;
+            case 1: strings[3] = "bunch of pieces"; break;
+            case 2: strings[3] = "paste"; break;
+            default: strings[3] = "liquid"; break;
         }
-        tooltip.add(String.format("This food is a %s.", state));
-        tooltip.add(String.format("It tastes %s.", taste));
-        tooltip.add(String.format("It is %s and %s on the tongue.", sweet, heavy));
+        return strings;
     }
 
     // Get three flavor variables from an ItemStack.
