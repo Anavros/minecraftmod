@@ -16,11 +16,24 @@ import boozemod.blocks.BlockChopping;
 public class BoozeFood extends ItemFood {
     public BoozeFood() {
         // Temporary until we override healing values per NBT attributes.
-        super(1, 0.0f, false);
+        super(0, 0.0f, false);
+    }
+
+    @Override
+    public int getHealAmount(ItemStack stack) {
+        int[] flavor = getFlavor(stack);
+        return flavor[3]*2;
+    }
+
+    @Override
+    public float getSaturationModifier(ItemStack stack) {
+        return 0.0f;
     }
 
     @Override
     @SideOnly(Side.CLIENT)
+    // Sets the unlocalized name, to be referenced in the language files.
+    // Each unique name must be covered in the language files for the names to show properly!
     public String getUnlocalizedName(ItemStack stack) {
         String[] s = getFlavorStrings(stack);
         return String.format("%s %s %s %s", s[0], s[1], s[2], s[3]);
