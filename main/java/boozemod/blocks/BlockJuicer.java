@@ -34,11 +34,11 @@ public class BlockJuicer extends Block {
         if(stack.getItem() instanceof DynamicFood) {
             FoodProfile prof = new FoodProfile(stack);
             // state reminder: 0->solid 1->pieces 2->mash 3->liquid
-            // TODO: 
+            // TODO: ?
             if(prof.state == 0) {
                 prof.state = 3;
-                world.playSound(player, pos, SoundEvents.BLOCK_GRASS_BREAK, SoundCategory.BLOCKS, 1.0f, 1.0f);
                 prof.apply(stack);
+                world.playSound(player, pos, SoundEvents.BLOCK_GRASS_BREAK, SoundCategory.BLOCKS, 1.0f, 1.0f);
             } // if not a solid, do nothing
         }
         // else: do nothing

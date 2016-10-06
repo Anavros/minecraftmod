@@ -37,6 +37,8 @@ public class BoozeMod
         new BlockTeapot(),
         new BlockChopping(),
         new BlockJuicer(),
+        new BlockPacker(),
+        new BlockHunger(),
     };
     
     /* Recipes and commands go here. */
