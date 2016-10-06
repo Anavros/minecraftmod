@@ -11,21 +11,21 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 import boozemod.DynamicFood;
 
 public class CommandSetTaste implements ICommand {
     // not sure if needed?
-    private final List aliases;
+    private final List<String> aliases;
 
     public CommandSetTaste() {
-        aliases = new ArrayList();
-        aliases.add("boozemodSetTaste");
+        aliases = new ArrayList<String>();
+        aliases.add("taste");
+        aliases.add("tst");
     }
 
-    public List getCommandAliases() {
+    public List<String> getCommandAliases() {
         return aliases;
     }
 
@@ -56,12 +56,12 @@ public class CommandSetTaste implements ICommand {
 
     @Override
     public String getCommandName() {
-        return "boozemodSetTaste";
+        return "taste";
     }
 
     @Override
     public String getCommandUsage(ICommandSender sender) {
-        return "boozemodSetTaste [0..2]";
+        return "taste <taste> <sweetness> <heaviness> <state>";
     }
 
     @Override

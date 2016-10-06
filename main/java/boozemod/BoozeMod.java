@@ -35,7 +35,8 @@ public class BoozeMod
     /* List of block instances. */
     private static Block[] blocks = {
         new BlockTeapot(),
-        new BlockChopping()
+        new BlockChopping(),
+        new BlockJuicer(),
     };
     
     /* Recipes and commands go here. */
