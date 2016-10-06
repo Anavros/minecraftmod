@@ -1,9 +1,9 @@
 package boozemod.blocks;
 
+import boozemod.FoodProfile;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumFacing;
@@ -21,36 +21,20 @@ public class BlockChopping extends Block {
     }
 
     @Override
-    public boolean onBlockActivated(
-            World world,
-            BlockPos pos,
-            IBlockState bs,
-            EntityPlayer player,
-            EnumHand hand,
-            ItemStack stack,
-            EnumFacing side,
-            float hitX,
-            float hitY,
-            float hitZ)
+    public boolean onBlockActivated( World world, BlockPos pos, IBlockState bs,
+            EntityPlayer player, EnumHand hand, ItemStack stack, EnumFacing side,
+            float hitX, float hitY, float hitZ)
     {
-        // check if the stack item is a child of DynamicFood
         if(stack == null) return false;
-        Item item = stack.getItem();
-        if(item != null && item instanceof DynamicFood) {
-            int[] flavor = DynamicFood.getFlavor(stack);
-            // for right now, we'll set the taste to nutty (0) if it is strange (3)
-            int state = flavor[3];
-            if(state == 0) { // 0: chunk
-                DynamicFood.setFlavor(stack, flavor[0], flavor[1], flavor[2], 1); // 1: pieces
-                System.out.println("Chopped chunk into pieces.");
-            } else if(state==1) {
-                DynamicFood.setFlavor(stack, flavor[0], flavor[1], flavor[2], 2); // 2: paste
-                System.out.println("Mashed pieces into paste.");
-            } else {
-                System.out.println("Not the right flavor.");
+        // Only affect children of DynamicFood.
+        if(stack.getItem() instanceof DynamicFood) {
+            FoodProfile prof = new FoodProfile(stack);
+            switch(prof.state) {
+                case 0: prof.state = 1;
+                case 1: prof.state = 2;
+                default: prof.state = 3;
             }
-        } else {
-            System.out.println("Null item or not an instance of DynamicFood.");
+            prof.apply(stack);
         }
         return true;
     }

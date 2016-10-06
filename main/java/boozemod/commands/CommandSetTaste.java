@@ -2,6 +2,8 @@ package boozemod.commands;
 
 import java.util.List;
 import java.util.ArrayList;
+
+import boozemod.FoodProfile;
 import net.minecraft.command.ICommand;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
@@ -73,9 +75,7 @@ public class CommandSetTaste implements ICommand {
         String argError = "Requires taste, sweetness, and heaviness args.";
         String intError = "Arguments must all be integers.";
         String success = "Successfully set new food attributes.";
-        EntityPlayer player;
-        ItemStack stack;
-        Item item;
+        String failure = "Must be used on a modded food.";
 
         // Only execute if on a server?
         if(sender.getEntityWorld().isRemote) return;
@@ -92,17 +92,18 @@ public class CommandSetTaste implements ICommand {
             sender.addChatMessage(new TextComponentString(intError));
             return;
         }
-        // so now we have three integer codes.
 
-        // next goal is to get the item the player is holding
-        player = ((EntityPlayer)sender.getCommandSenderEntity());
+        EntityPlayer player = ((EntityPlayer)sender.getCommandSenderEntity());
         if(player == null) return;
-        stack = player.inventory.getCurrentItem();
+        ItemStack stack = player.inventory.getCurrentItem();
         if(stack == null) return;
-        item = stack.getItem();
-        if(item == null || !(item instanceof DynamicFood)) return;
-        // now we have player, stack, and item
-        DynamicFood.setFlavor(stack, taste, sweet, heavy, state);
-        sender.addChatMessage(new TextComponentString(success));
+        if(stack.getItem() instanceof DynamicFood) {
+            // now we have player, stack, and item
+            FoodProfile prof = new FoodProfile(taste, sweet, heavy, state);
+            prof.apply(stack);
+            sender.addChatMessage(new TextComponentString(success));
+        } else {
+            sender.addChatMessage(new TextComponentString(failure));
+        }
     }
 }
