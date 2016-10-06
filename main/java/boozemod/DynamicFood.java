@@ -28,12 +28,14 @@ public class DynamicFood extends ItemFood {
     @SideOnly(Side.CLIENT)
     // Sets the unlocalized name, to be referenced in the language files.
     public String getUnlocalizedName(ItemStack stack) {
+        String name;
         FoodProfile prof = new FoodProfile(stack);
-        String taste = prof.humanReadable("taste");
-        String sweet = prof.humanReadable("sweetness");
-        String heavy = prof.humanReadable("heaviness");
-        String state = prof.humanReadable("state");
-        return String.format("%s %s %s %s", taste, sweet, heavy, state).toUpperCase();
+        if(prof.modifier != "") {
+            name = String.format("%s %s", prof.modifier, prof.original);
+        } else {
+            name = prof.original;
+        }
+        return name;
     }
 
     @Override

@@ -37,6 +37,8 @@ public class BlockJuicer extends Block {
             // TODO: ?
             if(prof.state == 0) {
                 prof.state = 3;
+                prof.juiced = true;
+                prof.modifier = "Juiced";
                 prof.apply(stack);
                 world.playSound(player, pos, SoundEvents.BLOCK_GRASS_BREAK, SoundCategory.BLOCKS, 1.0f, 1.0f);
             } // if not a solid, do nothing

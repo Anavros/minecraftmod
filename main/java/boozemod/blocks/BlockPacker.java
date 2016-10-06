@@ -35,6 +35,8 @@ public class BlockPacker extends Block {
             // state reminder: 0->solid 1->pieces 2->mash 3->liquid
             if(prof.state > 0) {
                 prof.state--;
+                prof.packed = true;
+                prof.modifier = "Packed";
                 world.playSound(player, pos, SoundEvents.BLOCK_BREWING_STAND_BREW, SoundCategory.BLOCKS, 1.0f, 1.0f);
             } else {
                 prof.state = 0;

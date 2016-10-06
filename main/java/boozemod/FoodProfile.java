@@ -12,6 +12,11 @@ public class FoodProfile {
     public int sweetness = 3;
     public int heaviness = 3;
     public int state = 3;
+    public boolean chopped = false;
+    public boolean juiced = false;
+    public boolean packed = false;
+    public String original = "Food";
+    public String modifier = "";
     
     private Map<Integer, String> tasteStrings;
     private Map<Integer, String> sweetnessStrings;
@@ -21,10 +26,15 @@ public class FoodProfile {
     public void read(ItemStack stack) {
         if(stack != null && stack.hasTagCompound()) {
             NBTTagCompound nbt = stack.getTagCompound();
-            if(nbt.hasKey("taste")) { taste = nbt.getInteger("taste"); }
-            if(nbt.hasKey("sweet")) { sweetness = nbt.getInteger("sweet"); }
-            if(nbt.hasKey("heavy")) { heaviness = nbt.getInteger("heavy"); }
-            if(nbt.hasKey("state")) { state = nbt.getInteger("state"); }
+            if(nbt.hasKey("taste")) taste = nbt.getInteger("taste");
+            if(nbt.hasKey("sweet")) sweetness = nbt.getInteger("sweet");
+            if(nbt.hasKey("heavy")) heaviness = nbt.getInteger("heavy");
+            if(nbt.hasKey("state")) state = nbt.getInteger("state");
+            if(nbt.hasKey("chopped")) chopped = nbt.getBoolean("chopped");
+            if(nbt.hasKey("juiced")) juiced = nbt.getBoolean("juiced");
+            if(nbt.hasKey("packed")) packed = nbt.getBoolean("packed");
+            if(nbt.hasKey("original")) original = nbt.getString("original");
+            if(nbt.hasKey("modifier")) modifier = nbt.getString("modifier");
         }
         // else: vars are initialized to defaults already
     }
@@ -37,6 +47,11 @@ public class FoodProfile {
         nbt.setInteger("sweet", sweetness);
         nbt.setInteger("heavy", heaviness);
         nbt.setInteger("state", state);
+        nbt.setBoolean("chopped", chopped);
+        nbt.setBoolean("juiced", juiced);
+        nbt.setBoolean("packed", packed);
+        nbt.setString("original", original);
+        nbt.setString("modifier", modifier);
     }
     
     public FoodProfile() {

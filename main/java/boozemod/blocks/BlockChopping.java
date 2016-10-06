@@ -35,6 +35,8 @@ public class BlockChopping extends Block {
             System.out.println(prof.state);
             if(prof.state < 3) {
                 prof.state++;
+                prof.chopped = true;
+                prof.modifier = "Chopped";
                 world.playSound(player, pos, SoundEvents.BLOCK_WOOD_BREAK, SoundCategory.BLOCKS, 1.0f, 1.0f);
             } else {
                 prof.state = 3;

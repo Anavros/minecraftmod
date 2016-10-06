@@ -28,7 +28,7 @@ public class BlockHunger extends Block {
             float hitX, float hitY, float hitZ)
     {
         if(player != null) {
-            player.addPotionEffect(new PotionEffect(Potion.getPotionById(17), 20, 20)); // #17 -> Hunger
+            player.addPotionEffect(new PotionEffect(Potion.getPotionById(17), 20, 10)); // #17 -> Hunger
             world.playSound(player, pos, SoundEvents.AMBIENT_CAVE, SoundCategory.AMBIENT, 1.0f, 1.0f);
             return false;
         } else {
