@@ -6,23 +6,27 @@ import net.minecraft.nbt.NBTTagCompound;
 import java.util.HashMap;
 import java.util.Map;
 
+// TODO: Add more modifiers to foods to dictate which preparations can be done to them.
+// E.g.: To be juiced, a solid must be juicy.
 public class FoodProfile {
     // Set to default values.
+    // If an ItemStack lacks values for any of these parameters, these defaults will be used.
     public int taste = 3;
     public int sweetness = 3;
     public int heaviness = 3;
     public int state = 3;
-    public boolean chopped = false;
-    public boolean juiced = false;
-    public boolean packed = false;
     public String original = "Food";
     public String modifier = "";
     
+    // Human-readable strings for each integer taste value.
+    // Initialized in putStrings(), which is called from the class constructors.
     private Map<Integer, String> tasteStrings;
     private Map<Integer, String> sweetnessStrings;
     private Map<Integer, String> heavinessStrings;
     private Map<Integer, String> stateStrings;
     
+    // Take an ItemStack and mutate this object's internal state to match the stack's NBT data.
+    // If the ItemStack is missing parameters, defaults are used instead.
     public void read(ItemStack stack) {
         if(stack != null && stack.hasTagCompound()) {
             NBTTagCompound nbt = stack.getTagCompound();
@@ -30,15 +34,13 @@ public class FoodProfile {
             if(nbt.hasKey("sweet")) sweetness = nbt.getInteger("sweet");
             if(nbt.hasKey("heavy")) heaviness = nbt.getInteger("heavy");
             if(nbt.hasKey("state")) state = nbt.getInteger("state");
-            if(nbt.hasKey("chopped")) chopped = nbt.getBoolean("chopped");
-            if(nbt.hasKey("juiced")) juiced = nbt.getBoolean("juiced");
-            if(nbt.hasKey("packed")) packed = nbt.getBoolean("packed");
             if(nbt.hasKey("original")) original = nbt.getString("original");
             if(nbt.hasKey("modifier")) modifier = nbt.getString("modifier");
         }
         // else: vars are initialized to defaults already
     }
     
+    // Update an ItemStack's NBT data to match this profile's internal state.
     public void apply(ItemStack stack) {
         if(stack == null) return;
         if(!stack.hasTagCompound()) { stack.setTagCompound(new NBTTagCompound()); }
@@ -47,22 +49,18 @@ public class FoodProfile {
         nbt.setInteger("sweet", sweetness);
         nbt.setInteger("heavy", heaviness);
         nbt.setInteger("state", state);
-        nbt.setBoolean("chopped", chopped);
-        nbt.setBoolean("juiced", juiced);
-        nbt.setBoolean("packed", packed);
         nbt.setString("original", original);
         nbt.setString("modifier", modifier);
     }
     
-    public FoodProfile() {
-        putStrings();
-    }
-    
+    // Create a new profile for an extant stack.
     public FoodProfile(ItemStack stack) {
         read(stack);
         putStrings();
     }
 
+    // Create a new profile by manually setting parameters.
+    // Used to apply new parameters to ItemStack NBT.
     public FoodProfile(int newTaste, int newSweet, int newHeavy, int newState) {
         taste = newTaste;
         sweetness = newSweet;
@@ -71,6 +69,8 @@ public class FoodProfile {
         putStrings();
     }
 
+    // These strings are used for human-readable food descriptions.
+    // Used in humanReadable().
     private void putStrings() {
         tasteStrings = new HashMap<>();
         tasteStrings.put(0, "nutty");
@@ -97,6 +97,8 @@ public class FoodProfile {
         stateStrings.put(3, "liquid");
     }
     
+    // Get a string describing this object's internal value for a given key.
+    // e.g. humanReadable("taste") + <internal variable taste == 0> -> "nutty"
     public String humanReadable(String key) {
         String str;
         switch(key) {

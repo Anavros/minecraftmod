@@ -33,11 +33,38 @@ Texture/State Mechanics:
 -> Meals are defined by a combination of states.
 
 Food States:
--> Chunk
--> Pieces
--> Powder
--> Paste
--> Liquid
+-> Apple
+-> Apple Chunks
+-> Diced Apple
+-> Minced Apple
+-> Mashed Apple
+-> Apple Powder
+-> Apple Juice
+
+Preparations:
+-> Chopping     solid -> pieces, (maybe more levels of granularity)
+-> Juicing      juicy solid -> liquid
+-> Mashing?     tender solid/pieces -> mash
+-> Blending     two mashes -> one mash?
+-> Packing      pieces -> solid
+-> Kneading     ?
+-> Rising?      ?
+-> Drying
+-> Grinding
+
+Cooking Methods:
+-> Frying
+-> Sauteing
+-> Boiling
+-> Baking
+-> Broiling
+-> Simmering
+-> Poaching
+-> Roasting
+-> Grilling
+
+Cooking Mechanics:
+-> Using a cooking block more than once increases the level of doneness.
 
 Food Taste:
 -> Three dimensions: sweet/savory, light/heavy, and acidic/fatty.
