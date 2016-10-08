@@ -3,7 +3,9 @@ package boozemod;
 import boozemod.commands.CommandSetTaste;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -17,12 +19,17 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import boozemod.items.*;
 import boozemod.blocks.*;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Mod(modid = BoozeMod.MODID, version = BoozeMod.VERSION)
 public class BoozeMod
 {
     public static final String MODID = "boozemod";
     public static final String VERSION = "0.0.1.0";
+    
+    /* All mod items are put within this creative tab. */
+    public static CreativeTabs tab;
 
     /* Store all item instances within mod class. */
     private static Item[] items = {
@@ -47,6 +54,16 @@ public class BoozeMod
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
+        // Add creative tab.
+        // Needs to happen before items and blocks are initialized!
+        tab = new CreativeTabs("Booze Mod") {
+            @Override
+            @SideOnly(Side.CLIENT)
+            public Item getTabIconItem() {
+                return Items.POTIONITEM;
+            }
+        };
+        
         // Models and textures must be loaded in pre-init!
         registerItems();
         registerBlocks();
@@ -75,6 +92,7 @@ public class BoozeMod
     
     private static void registerBlocks() {
         for(Block b : blocks) {
+            b.setCreativeTab(tab);
             ItemBlock ib = new ItemBlock(b);
             ib.setRegistryName(b.getRegistryName());
             GameRegistry.register(b);
@@ -84,6 +102,7 @@ public class BoozeMod
     
     private static void registerItems() {
         for(Item i : items) {
+            i.setCreativeTab(tab);
             ModelLoader.setCustomModelResourceLocation(i, 0, 
                 new ModelResourceLocation(i.getRegistryName(), "inventory"));
             GameRegistry.register(i);

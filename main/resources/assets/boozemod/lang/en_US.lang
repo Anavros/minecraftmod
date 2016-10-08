@@ -1,8 +1,26 @@
-#Foods
+# Foods
 item.Acorn.name=Acorn
 item.Pepper.name=Pepper
 item.Meal.name=Meal
 item.Drink.name=Drink
 
-#Blocks
+# Custom Translations
+# Food names are generated in code, meaning that we can't use standard translation methods.
+# However, using I18n (terrible shorthand for "Internationalization"), we can translate each part
+# of the whole name, and put each part together, ending up with a fully-translated dynamic name.
+prep.chopped=Chopped
+prep.packed=Compressed
+prep.ground_juicy=Liquid
+prep.ground_tender=Mashed
+prep.ground_dry=Powdered
+
+# Blocks
 tile.Teapot.name=Teapot
+tile.Dryer.name=Drying Block
+tile.Moistener.name=Moistening Block
+tile.ChoppingBlock.name=Chopping Block
+tile.Juicer.name=Grinder
+tile.Packer.name=Food Solidifier
+tile.HungerBlock.name=Block of Mysterious Allure
+
+itemGroup.Booze Mod=Booze Mod
