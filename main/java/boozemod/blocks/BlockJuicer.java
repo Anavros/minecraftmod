@@ -38,9 +38,9 @@ public class BlockJuicer extends Block {
         if(stack.getItem() instanceof DynamicFood) {
             FoodProfile prof = new FoodProfile(stack);
             // state reminder: 0->solid 1->pieces 2->mash 3->liquid
-            if(prof.state == 0 || prof.state == 1) {
-                prof.state = 3;
-                switch(prof.juiciness) {
+            if(prof.get("state") == 0 || prof.get("state") == 1) {
+                prof.set("state", 3);
+                switch(prof.get("juiciness")) {
                     case 0: // Dry
                         prof.modifier = "Ground";
                     case 1: // Tender

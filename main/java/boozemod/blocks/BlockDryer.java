@@ -31,11 +31,12 @@ public class BlockDryer extends Block {
         // Only affect children of DynamicFood.
         if(stack.getItem() instanceof DynamicFood) {
             FoodProfile prof = new FoodProfile(stack);
-            if(0 <= prof.juiciness - 1 && prof.juiciness - 1 <= 2) {
-                prof.juiciness--;
+            int potentialJuiciness = prof.get("juiciness") - 1;
+            if(0 <= potentialJuiciness && potentialJuiciness <= 2) {
+                prof.set("juiciness", potentialJuiciness);
                 world.playSound(player, pos, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 1.0f, 1.0f);
             } else {
-                prof.juiciness = 3; // Hyperliquid, used as error code
+                prof.set("juiciness", 3); // Hyperliquid, used as error code
             }
             prof.apply(stack);
         }

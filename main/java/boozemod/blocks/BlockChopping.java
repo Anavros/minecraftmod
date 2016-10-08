@@ -32,12 +32,11 @@ public class BlockChopping extends Block {
         // Only affect children of DynamicFood.
         if(stack.getItem() instanceof DynamicFood) {
             FoodProfile prof = new FoodProfile(stack);
-            System.out.println(prof.state);
-            if(prof.state == 0 || prof.state == 1) {
+            if(prof.get("state") == 0 || prof.get("state") == 1) {
             // If state == 1, there will effectively be no change.
             // But the sound will play again, which is nice for immersion.
             // So the player can chop something up over and over, which should be pretty satisfying.
-                prof.state = 1;
+                prof.set("state", 1);
                 prof.modifier = "Chopped";
                 world.playSound(player, pos, SoundEvents.BLOCK_WOOD_BREAK, SoundCategory.BLOCKS, 2.0f, 1.0f);
             }
