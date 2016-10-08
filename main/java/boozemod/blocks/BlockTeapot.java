@@ -3,7 +3,11 @@ package boozemod.blocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.IProperty;
+import net.minecraft.block.properties.PropertyDirection;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -27,6 +31,7 @@ public class BlockTeapot extends Block implements ITileEntityProvider{
 
     @Override
     public boolean isOpaqueCube(IBlockState bs) {
+
         return false;
     }
 
@@ -47,4 +52,34 @@ public class BlockTeapot extends Block implements ITileEntityProvider{
             return false;
         }
     }
+
+    //To create a rotating object requires everything from here...
+    public static final PropertyDirection ORIENTATION = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
+
+    @Override
+    protected BlockStateContainer createBlockState() {
+        return new BlockStateContainer(this, new IProperty[] {ORIENTATION});
+    }
+
+    @Override
+    public IBlockState getStateFromMeta(int meta) {
+        EnumFacing facing = EnumFacing.getHorizontal(meta);
+        return this.getDefaultState().withProperty(ORIENTATION, facing);
+    }
+
+    @Override
+    public int getMetaFromState(IBlockState state) {
+        EnumFacing facing = (EnumFacing)state.getValue(ORIENTATION);
+        int facedir = facing.getHorizontalIndex();
+        return facedir;
+    }
+
+    @Override
+    public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing blockFaceClicked, float x, float y,
+                                     float z, int meta, EntityLivingBase placer) {
+        EnumFacing enumfacing = (placer == null) ? EnumFacing.NORTH : EnumFacing.fromAngle(placer.rotationYaw);
+
+        return this.getDefaultState().withProperty(ORIENTATION, enumfacing);
+    }
+    //...to here
 }

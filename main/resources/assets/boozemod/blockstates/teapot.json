@@ -1,5 +1,8 @@
 {
     "variants": {
-        "normal": { "model": "boozemod:teapot" }
+        "facing=east": {"model": "boozemod:teapot"},
+        "facing=south": {"model": "boozemod:teapot", "y" : 90},
+        "facing=west": {"model": "boozemod:teapot", "y" : 180},
+        "facing=north": {"model": "boozemod:teapot", "y" : 270}
     }
 }
