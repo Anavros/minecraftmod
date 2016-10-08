@@ -95,11 +95,13 @@ public class BoozeMod
             b.setCreativeTab(tab);
             ItemBlock ib = new ItemBlock(b);
             ib.setRegistryName(b.getRegistryName());
+            ModelLoader.setCustomModelResourceLocation(ib, 0,
+                    new ModelResourceLocation(ib.getRegistryName(), "inventory"));
             GameRegistry.register(b);
             GameRegistry.register(ib);
         }
     }
-    
+
     private static void registerItems() {
         for(Item i : items) {
             i.setCreativeTab(tab);
