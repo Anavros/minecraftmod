@@ -33,12 +33,13 @@ public class BlockPacker extends Block {
         if(stack.getItem() instanceof DynamicFood) {
             FoodProfile prof = new FoodProfile(stack);
             // state reminder: 0->solid 1->pieces 2->mash 3->liquid
-            if(prof.state > 0) {
-                prof.state--;
+            int potentialState = prof.get("state") - 1;
+            if(0 <= potentialState && potentialState <= 2) {
+                prof.set("state", potentialState);
                 prof.modifier = "Packed";
                 world.playSound(player, pos, SoundEvents.BLOCK_BREWING_STAND_BREW, SoundCategory.BLOCKS, 1.0f, 1.0f);
             } else {
-                prof.state = 0;
+                prof.set("state", 0);
             }
             prof.apply(stack);
         }

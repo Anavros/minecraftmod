@@ -16,7 +16,7 @@ public class DynamicFood extends ItemFood {
     @Override
     public int getHealAmount(ItemStack stack) {
         FoodProfile prof = new FoodProfile(stack);
-        return prof.state*2;
+        return prof.get("state")*2;
     }
 
     @Override
@@ -56,14 +56,15 @@ public class DynamicFood extends ItemFood {
             boolean advanced)  // not sure what this does? hold shift for adv. details?
     {
         FoodProfile prof = new FoodProfile(stack);
-        String taste = prof.humanReadable("taste");
-        String sweet = prof.humanReadable("sweetness");
-        String heavy = prof.humanReadable("heaviness");
-        String state = prof.humanReadable("state");
-        String juicy = prof.humanReadable("juiciness");
+        String taste = prof.getDesc("taste");
+        String sweet = prof.getDesc("sweetness");
+        String heavy = prof.getDesc("heaviness");
+        String state = prof.getDesc("state");
+        String juicy = prof.getDesc("juiciness");
         tooltip.add(String.format("This food is a %s.", state));
         tooltip.add(String.format("It tastes %s.", taste));
         tooltip.add(String.format("It is %s and %s on the tongue.", sweet, heavy));
         tooltip.add(String.format("The meat is %s.", juicy));
+        tooltip.add(advanced ? "Advanced tooltip." : "Not advanced tooltip.");
     }
 }
