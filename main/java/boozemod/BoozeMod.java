@@ -9,6 +9,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -51,6 +52,7 @@ public class BoozeMod
     };
     
     /* Recipes and commands go here. */
+    // TODO
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
@@ -67,6 +69,7 @@ public class BoozeMod
         // Models and textures must be loaded in pre-init!
         registerItems();
         registerBlocks();
+        registerTileEntities();
         registerRecipes();
     }
 
@@ -100,6 +103,11 @@ public class BoozeMod
             GameRegistry.register(b);
             GameRegistry.register(ib);
         }
+    }
+    
+    private static void registerTileEntities() {
+        // what does this even do?
+        GameRegistry.registerTileEntity(TileEntityTeapot.class, "tile_teapot");
     }
 
     private static void registerItems() {

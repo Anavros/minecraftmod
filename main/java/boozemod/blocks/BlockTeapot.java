@@ -14,7 +14,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockTeapot extends Block implements ITileEntityProvider{
@@ -33,6 +35,18 @@ public class BlockTeapot extends Block implements ITileEntityProvider{
     public boolean isOpaqueCube(IBlockState bs) {
 
         return false;
+    }
+    
+    @Override
+    public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+        // Do these numerals have to have 'D' suffixes to be considered doubles?
+        // Also, remember that the y-coordinate is vertical in minecraft, not z-coord.
+        return new AxisAlignedBB(0.1D, 0.0D, 0.1D, 0.9D, 0.5D, 0.9D);
+    }
+    
+    @Override
+    public AxisAlignedBB getCollisionBoundingBox(IBlockState state, World world, BlockPos pos) {
+        return new AxisAlignedBB(0.1D, 0.0D, 0.1D, 0.9D, 0.5D, 0.9D);
     }
 
     @Override
