@@ -30,7 +30,7 @@ public class DynamicFood extends ItemFood {
     public String getUnlocalizedName(ItemStack stack) {
         String name;
         FoodProfile prof = new FoodProfile(stack);
-        if(prof.modifier != "") {
+        if(!prof.modifier.equals("")) {
             name = String.format("%s %s", prof.modifier, prof.original);
         } else {
             name = prof.original;
@@ -60,8 +60,10 @@ public class DynamicFood extends ItemFood {
         String sweet = prof.humanReadable("sweetness");
         String heavy = prof.humanReadable("heaviness");
         String state = prof.humanReadable("state");
+        String juicy = prof.humanReadable("juiciness");
         tooltip.add(String.format("This food is a %s.", state));
         tooltip.add(String.format("It tastes %s.", taste));
         tooltip.add(String.format("It is %s and %s on the tongue.", sweet, heavy));
+        tooltip.add(String.format("The meat is %s.", juicy));
     }
 }

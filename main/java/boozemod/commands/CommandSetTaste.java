@@ -16,7 +16,6 @@ import net.minecraft.item.ItemStack;
 import boozemod.DynamicFood;
 
 public class CommandSetTaste implements ICommand {
-    // not sure if needed?
     private final List<String> aliases;
 
     public CommandSetTaste() {
@@ -71,15 +70,16 @@ public class CommandSetTaste implements ICommand {
         int taste;
         int sweet;
         int heavy;
+        int juicy;
         int state;
-        String argError = "Requires taste, sweetness, and heaviness args.";
+        String argError = "Requires five arguments: taste, sweet, heavy, juicy, and state, all <0-2>.";
         String intError = "Arguments must all be integers.";
         String success = "Successfully set new food attributes.";
         String failure = "Must be used on a modded food.";
 
         // Only execute if on a server?
         if(sender.getEntityWorld().isRemote) return;
-        if(args.length != 4) {
+        if(args.length != 5) {
             sender.addChatMessage(new TextComponentString(argError));
             return;
         }
@@ -87,7 +87,8 @@ public class CommandSetTaste implements ICommand {
             taste = Integer.parseInt(args[0]);
             sweet = Integer.parseInt(args[1]);
             heavy = Integer.parseInt(args[2]);
-            state = Integer.parseInt(args[3]);
+            juicy = Integer.parseInt(args[3]);
+            state = Integer.parseInt(args[4]);
         } catch (NumberFormatException e) {
             sender.addChatMessage(new TextComponentString(intError));
             return;
@@ -98,8 +99,7 @@ public class CommandSetTaste implements ICommand {
         ItemStack stack = player.inventory.getCurrentItem();
         if(stack == null) return;
         if(stack.getItem() instanceof DynamicFood) {
-            // now we have player, stack, and item
-            FoodProfile prof = new FoodProfile(taste, sweet, heavy, state);
+            FoodProfile prof = new FoodProfile(taste, sweet, heavy, juicy, state);
             prof.apply(stack);
             sender.addChatMessage(new TextComponentString(success));
         } else {

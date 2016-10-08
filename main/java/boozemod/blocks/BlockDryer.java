@@ -9,18 +9,17 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.entity.player.EntityPlayer;
 
 import boozemod.DynamicFood;
 
-public class BlockPacker extends Block {
-    public BlockPacker() {
+public class BlockDryer extends Block {
+    public BlockDryer() {
         super(Material.IRON);
-        this.setUnlocalizedName("Packer");
-        this.setRegistryName("packer");
+        this.setUnlocalizedName("Dryer");
+        this.setRegistryName("dryer");
     }
 
     @Override
@@ -32,17 +31,15 @@ public class BlockPacker extends Block {
         // Only affect children of DynamicFood.
         if(stack.getItem() instanceof DynamicFood) {
             FoodProfile prof = new FoodProfile(stack);
-            // state reminder: 0->solid 1->pieces 2->mash 3->liquid
-            if(prof.state > 0) {
-                prof.state--;
-                prof.modifier = "Packed";
-                world.playSound(player, pos, SoundEvents.BLOCK_BREWING_STAND_BREW, SoundCategory.BLOCKS, 1.0f, 1.0f);
+            if(0 <= prof.juiciness - 1 && prof.juiciness - 1 <= 2) {
+                prof.juiciness--;
+                world.playSound(player, pos, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 1.0f, 1.0f);
             } else {
-                prof.state = 0;
+                prof.juiciness = 3; // Hyperliquid, used as error code
             }
             prof.apply(stack);
         }
-        // else: do nothing
+        // if not an instance of DynamicFood: do nothing
         return true;
     }
 }

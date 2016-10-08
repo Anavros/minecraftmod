@@ -41,6 +41,10 @@ Food States:
 -> Apple Powder
 -> Apple Juice
 
+Other Modifiers:
+-> Moistness: Dry, Tender, Juicy
+-> Leavening: Unleavened, Fast-Rising, Slow-Rising
+
 Preparations:
 -> Chopping     solid -> pieces, (maybe more levels of granularity)
 -> Juicing      juicy solid -> liquid
@@ -48,9 +52,9 @@ Preparations:
 -> Blending     two mashes -> one mash?
 -> Packing      pieces -> solid
 -> Kneading     ?
--> Rising?      ?
+-> Rising?      Maybe place a tile entity somewhere? Used for breads and cakes?
 -> Drying
--> Grinding
+-> Grinding     Dry Solid/Pieces -> Powder; Tender -> Mash; Juicy -> Liquid
 
 Cooking Methods:
 -> Frying

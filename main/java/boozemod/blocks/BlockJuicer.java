@@ -2,7 +2,6 @@ package boozemod.blocks;
 
 import boozemod.FoodProfile;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockCauldron;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.SoundEvents;
@@ -10,7 +9,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.entity.player.EntityPlayer;
@@ -25,6 +23,12 @@ public class BlockJuicer extends Block {
     }
 
     @Override
+    // Juicing Mechanics:
+    // Juicy Solid|Pieces -> Liquid
+    // Tender Solid|Pieces -> Mash
+    // Dry Solid|Piecies -> Powder
+    // TODO: Liquid, mash, and powder can all be combined, using juiciness as a distinction.
+    // i.e. Juicy Grind == Liquid, Tender Grind == Mash, Dry Grind == Powder
     public boolean onBlockActivated( World world, BlockPos pos, IBlockState bs,
             EntityPlayer player, EnumHand hand, ItemStack stack, EnumFacing side,
             float hitX, float hitY, float hitZ)
@@ -34,16 +38,23 @@ public class BlockJuicer extends Block {
         if(stack.getItem() instanceof DynamicFood) {
             FoodProfile prof = new FoodProfile(stack);
             // state reminder: 0->solid 1->pieces 2->mash 3->liquid
-            // TODO: ?
-            if(prof.state == 0) {
+            if(prof.state == 0 || prof.state == 1) {
                 prof.state = 3;
-                prof.juiced = true;
-                prof.modifier = "Juiced";
+                switch(prof.juiciness) {
+                    case 0: // Dry
+                        prof.modifier = "Ground";
+                    case 1: // Tender
+                        prof.modifier = "Mashed";
+                    case 2: // Juicy
+                        prof.modifier = "Juiced";
+                    default: // Hyperliquid (error case)
+                        prof.modifier = "Surrealized";
+                }
                 prof.apply(stack);
                 world.playSound(player, pos, SoundEvents.BLOCK_GRASS_BREAK, SoundCategory.BLOCKS, 1.0f, 1.0f);
-            } // if not a solid, do nothing
+            } // if not a solid: do nothing
         }
-        // else: do nothing
+        // if not an instance of DynamicFood: do nothing
         return true;
     }
 }

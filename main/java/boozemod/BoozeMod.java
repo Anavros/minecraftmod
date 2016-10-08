@@ -39,6 +39,8 @@ public class BoozeMod
         new BlockJuicer(),
         new BlockPacker(),
         new BlockHunger(),
+        new BlockDryer(),
+        new BlockMoistener(),
     };
     
     /* Recipes and commands go here. */
